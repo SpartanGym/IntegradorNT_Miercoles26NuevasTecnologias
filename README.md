@@ -1,4 +1,4 @@
-# 🏋️‍♂️📊 NeoApp - Análisis de Datos con Python para Spartan Gym
+# 🏋️‍♂️📊 SpartanGym - Análisis de Datos con Python para Spartan Gym
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python">
