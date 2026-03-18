@@ -1,7 +1,7 @@
 # 🧠📊 NeoApp - Data Analytics Module for Spartan Gym
-##Thomas Rodriguez Londoño
-##Julian Molina
-##Juan Jose Molina
+#Thomas Rodriguez Londoño
+#Julian Molina
+#Juan Jose Molina
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python">
   <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-green">
