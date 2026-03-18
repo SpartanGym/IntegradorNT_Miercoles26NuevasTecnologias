@@ -1,4 +1,4 @@
-# 🏋️‍♂️📊 SpartanGym - Análisis de Datos con Python para Spartan Gym
+# 🏋️‍♂️📊 NeoApp - Análisis de Datos con Python para Spartan Gym
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python">
@@ -7,6 +7,14 @@
   <img src="https://img.shields.io/badge/OS-Windows-blue">
   <img src="https://img.shields.io/badge/Project-SpartanGym-red">
 </p>
+
+---
+
+## 👥 Equipo de desarrollo
+
+- 👨‍💻 **Thomas Rodriguez Londoño**  
+- 👨‍💻 **Julian Molina**  
+- 👨‍💻 **Juan Jose Molina**  
 
 ---
 
