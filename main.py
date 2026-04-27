@@ -1,5 +1,5 @@
 
-from utils.simulaciónDatosSocios import generar_socios
+from utils.simulacionClases import generar_clases
 
-resultado=(generar_socios(1000))
+resultado=(generar_clases(1000))
 print(resultado) 
