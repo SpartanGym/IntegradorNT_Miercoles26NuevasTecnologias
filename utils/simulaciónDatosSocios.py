@@ -6,23 +6,26 @@ def generar_socios(numeroSimulaciones):
 
     nombres=["Thomas","Jose","Alberto","Santiago","Camilo"]
     estado=["usuario activo","usuario bloqueado"]
-    telefono=["30168898","3122581896","3082225555","3086741767"]
+    telefono=["3016889898","3122581896","3082225555","3086741767"]
     correo=["r.eb.e.cca.9.7.10@gmail.com","theobald2798+paz@gmail.com","tayahschwarz257+mcmullin@googlemail.com","s.v.bd.j.ek.sh.s.kv@gmail.com"]
     fechaInicio=datetime(2026,1,2)
 
     simulaciones=[]
     for _ in range(numeroSimulaciones):
 
+        created=fechaInicio+timedelta(days=random.randint(0,60))
+        updated=created+timedelta(days=random.randint(0,10))
+
         Socio={
-            "id_socio":random.randint(0,200),
+            "id_socio":random.randint(1,200),
             "Nombre_usuario":random.choice(nombres),
             "correo":random.choice(correo),
             "telefono":random.choice(telefono),
             "fecha_inscripcion":fechaInicio+timedelta(days=random.randint(0,60)),
             "estado":random.choice(estado),
             "id_membresia":random.randint(200,400),
-            "created_at":fechaInicio+timedelta(days=random.randint(0,60)),
-            "updated_at":fechaInicio+timedelta(days=random.randint(0,60))
+            "created_at":created,
+            "updated_at":updated
         }
 
         #Inyectando errores controlados
@@ -43,8 +46,8 @@ def generar_socios(numeroSimulaciones):
             Socio["id_membresia"]=None
         elif(probabilidadError<0.9):
             Socio["created_at"]=None
-        elif(probabilidadError<0.9):
+        elif(probabilidadError<1.0):
             Socio["updated_at"]=None
 
         simulaciones.append(Socio)
-    return simulaciones 
+    return simulaciones
