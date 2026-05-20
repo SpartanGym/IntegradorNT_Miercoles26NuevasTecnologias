@@ -12,8 +12,8 @@ from notebook.limpiezaDatosClases import limpiar_clases
 
 
 #Creando las simulaciones
-simulaciones_socios=generar_socios(100)
-simulaciones_clases=generar_clases(100)
+simulaciones_socios=generar_socios(1000)
+simulaciones_clases=generar_clases(1000)
 
 print(simulaciones_socios)
 print(simulaciones_clases)
