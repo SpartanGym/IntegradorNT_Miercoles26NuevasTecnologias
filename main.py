@@ -1,30 +1,41 @@
 import pandas as pd
 
-#zona para importar simulaciones
+from utils.simulacionDatosClases import generar_clases
 
-from utils.simulaciónDatosSocios import generar_socios
-from utils.simulacionClases import generar_clases
-
-#zona para importar limpiezas 
-
-from notebook.limpiezaDatosSocios import limpiar_socios
 from notebook.limpiezaDatosClases import limpiar_clases
+from notebook.descripcionDatosClases import describir_datos
+from notebook.transformacionDatosClases import transformar_datos
 
 
-#Creando las simulaciones
-simulaciones_socios=generar_socios(1000)
-simulaciones_clases=generar_clases(1000)
+# GENERAR DATOS
+simulaciones = generar_clases(1000)
 
-print(simulaciones_socios)
-print(simulaciones_clases)
+# convertir a dataframe
+data_frame_sucio = pd.DataFrame(simulaciones)
 
-#Ordenando las simulaciones
-simulaciones_socios_ordenadas=pd.DataFrame(simulaciones_socios)
-simulaciones_clases_ordenadas=pd.DataFrame(simulaciones_clases)
 
-#limpiando el set de datos
-simulaciones_socios_limpias=limpiar_socios(simulaciones_socios_ordenadas)
-simulaciones_clases_limpias=limpiar_clases(simulaciones_clases_ordenadas)
 
-print(simulaciones_socios_limpias)
-print(simulaciones_clases_limpias)
+# LIMPIAR DATOS
+data_frame_limpio = limpiar_clases(data_frame_sucio)
+
+
+
+# DESCRIBIR DATOS
+describir_datos(data_frame_limpio)
+
+
+
+# TRANSFORMAR DATOS
+resultados = transformar_datos(data_frame_limpio)
+
+
+# MOSTRAR RESULTADOS
+print(resultados["clasesVirtuales"])
+
+print(resultados["clasesConMuchosCupos"])
+
+print(resultados["clasesNivel1"])
+
+print(resultados["clasesPorEntrenador"])
+
+print(resultados["clasesPorFecha"])
