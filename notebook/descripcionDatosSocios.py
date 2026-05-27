@@ -1,56 +1,58 @@
-#Toda rutina de analisis debe describir el data set
-
-#1. Es importante conocer cuantos registros tengo
-#2. Es importante conocer cuantos atributos tengo 
-#3. Es util tener acceso a una lista con los nombres de los atributos
-#4. Es util hacer conteos de algunas columnas de interes
-#5. Es util conocer las estadisticas descriptivas de los campos numericos
-#Media-max-min-std-percentiles
-#Si tengo fechas es util conocer cual es la fecha mas antigua y la fecha
-#mas nueva
-
 import pandas as pd
 
 def describir_datos(data_frame_limpio_socios):
 
     print("*** DESCRIPCION DEL DATASET ***")
 
+    # 1. Número de filas
     print(f"Numero de filas del dataset: {data_frame_limpio_socios.shape[0]}")
 
+    # 2. Número de columnas
     print(f"Numero de columnas del dataset: {data_frame_limpio_socios.shape[1]}")
 
+    # 3. Lista de columnas
     print(f"Lista de columnas disponibles: {list(data_frame_limpio_socios.columns)}")
 
-    print(f"Tipos de dato de cada atributo: {data_frame_limpio_socios.dtypes}")
+    # 4. Tipos de datos
+    print(f"Tipos de dato de cada atributo:\n{data_frame_limpio_socios.dtypes}")
 
 
-    #Estadisticas (SOLO APLICA PARA DATOS NUMERICOS)
-    print("*** ESTADISTICAS ***")
+    # =========================
+    # ESTADÍSTICAS NUMÉRICAS
+    # =========================
+    print("\n*** ESTADISTICAS ***")
 
-    print(
-        f"{data_frame_limpio_socios[['id_socio','id_membresia']].describe()}"
-    )
+    columnas_numericas = data_frame_limpio_socios.select_dtypes(include=["number"]).columns
 
-
-    #Informacion de conteos valiosos
-    print("*** CONTEOS ***")
-
-    print(
-        f"{data_frame_limpio_socios['estado'].value_counts()}"
-    )
-
-    print(
-        f"{data_frame_limpio_socios['Nombre_usuario'].value_counts()}"
-    )
+    if len(columnas_numericas) > 0:
+        print(data_frame_limpio_socios[columnas_numericas].describe())
+    else:
+        print("No hay columnas numéricas para describir")
 
 
-    #Describiendo las fechas
-    print("*** DESCRIPCION DE FECHAS ***")
+    # =========================
+    # CONTEOS
+    # =========================
+    print("\n*** CONTEOS ***")
 
-    print(
-        f"{data_frame_limpio_socios['fecha_inscripcion'].min()}"
-    )
+    if "estado" in data_frame_limpio_socios.columns:
+        print("\nEstado:")
+        print(data_frame_limpio_socios["estado"].value_counts())
 
-    print(
-        f"{data_frame_limpio_socios['fecha_inscripcion'].max()}"
-    )
+    if "nombre" in data_frame_limpio_socios.columns:
+        print("\nNombre:")
+        print(data_frame_limpio_socios["nombre"].value_counts())
+
+
+    # =========================
+    # FECHAS
+    # =========================
+    print("\n*** DESCRIPCION DE FECHAS ***")
+
+    if "fecha_inscripcion" in data_frame_limpio_socios.columns:
+
+        print(f"Fecha mas antigua: {data_frame_limpio_socios['fecha_inscripcion'].min()}")
+        print(f"Fecha mas reciente: {data_frame_limpio_socios['fecha_inscripcion'].max()}")
+
+    else:
+        print("No hay columna de fechas para analizar")
